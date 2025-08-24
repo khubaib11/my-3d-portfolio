@@ -52,25 +52,49 @@ export const clientReviews = [
     position: "CEO of BrightStar Enterprises",
     img: "assets/review4.png",
     review:
-      "Adrian was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend backend dev are top-notch.",
+    "Adrian was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend backend dev are top-notch.",
   },
 ];
 
 export const myProjects = [
   {
-    title: "Automated Answer Sheet Assessment System",
-    desc: "An AI-powered platform that automates the evaluation of handwritten student papers using advanced OCR and smart grading models. It ensures accurate recognition, fair assessments, and rubric-based grading with minimal manual effort.",
+    title: "Bella Vista - Restaurant",
+    desc: "A modern restaurant platform that lets customers browse menus, place orders, and follow events, while empowering Bella Vista to manage operations with ease and efficiency.",
     subdesc:
-      "Developed with React.js, Node.js, Express.js, MongoDB Atlas, Firebase Auth, and Python Flask, the system integrates cutting-edge AI models like Gemini, GPT-4o-mini, LLaMA 3.2, and H2O VL-Mississippi. It delivers customizable grading, detailed performance reports, and a secure, user-friendly web experience tailored for educators.",
+      "Built with Next.js, TypeScript, Firebase, Tailwind CSS, Radix UI, and shadcn/ui, Bella Vista offers diners a smooth interface and the restaurant team reliable tools for streamlined management.",
+    href: "https://restaurants-bella-vista.vercel.app/",
+    texture: "/textures/project/bella-restaurant.mp4",
+    logo: "/assets/bella-vista.png",
+    logoStyle: {
+      backgroundColor: "#FFC107",
+      background:
+        "linear-gradient(0deg, #FFC10750, #FFC10750), linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.8) 100%)",
+      border: "0.2px solid rgba(255, 255, 255, 1)",
+      boxShadow: "0px 0px 60px 0px rgba(255, 193, 7, 0.3)",
+    },
+    spotlight: "/assets/spotlight3.png",
+    tags: [
+      { id: 1, name: "Next.js", path: "/assets/next.jpeg" },
+      { id: 2, name: "TailwindCSS", path: "assets/tailwindcss.png" },
+      { id: 3, name: "TypeScript", path: "/assets/typescript.png" },
+      { id: 4, name: "Framer Motion", path: "/assets/framer.png" },
+      { id: 5, name: "Firebase", path: "/assets/firebase.png" },
+    ],
+  },
+
+  {
+    title: "Automated Answer Sheet Assessment System",
+    desc: "An AI-powered platform that automates the evaluation of handwritten student papers using OCR and rubric-based grading, ensuring accuracy, fairness, and minimal manual work.",
+    subdesc:
+      "Developed with React.js, Node.js, Express.js, MongoDB Atlas, Firebase Auth, and Python Flask, it integrates advanced AI models like Gemini, GPT-4o-mini, LLaMA 3.2, and H2O VL-Mississippi to deliver reliable grading, performance reports, and a secure educator-focused experience.",
     href: "https://github.com/khubaib11/AUTOMATED-ANSWER-SHEET-ASSESSMENT-SYSTEM",
     texture: "/textures/project/project01.mp4",
     logo: "/assets/sheet_logo.png",
     logoStyle: {
-  backgroundColor: "#FFFFFF",
-  border: "0.2px solid #F9FAFB", 
-  boxShadow: "0px 0px 60px 0px #FFFFFF80", // White glow
-},
-
+      backgroundColor: "#FFFFFF",
+      border: "0.2px solid #F9FAFB",
+      boxShadow: "0px 0px 60px 0px #FFFFFF80",
+    },
     spotlight: "/assets/spotlight1.png",
     tags: [
       { id: 1, name: "React.js", path: "/assets/react.svg" },
@@ -82,11 +106,32 @@ export const myProjects = [
   },
 
   {
-    title: "Quick FicX AI",
-    desc: "An AI-driven Android application designed to enhance writing, communication, and creativity through intelligent tools. It streamlines tasks like grammar correction, smart replies, resume evaluation, and storytelling in one seamless experience.",
+    title: "Lunexa - AI-Powered Trading Platform",
+    desc: "Lunexa is a sleek trading platform enhanced with AI, providing intuitive tools and smooth navigation for both beginners and experienced traders to execute strategies with confidence.",
     subdesc:
-      "Built with Jetpack Compose, Kotlin, and Shared Preferences, the app integrates GitHub-hosted GPT-4.1 and Gemini models for real-time processing. It delivers professional grammar checks, engaging social posts, AI-generated stories, and personalized resume insights, all within a modern, intuitive, and user-friendly mobile interface.",
+      "Built with Vite, React 19, TypeScript, Phosphor Icons, Framer Motion, and React Router, Lunexa balances performance, animations, and modularity, enabling easy feature growth, advanced analytics, and commercial scalability.",
+    href: "https://lunexa-ai-trading.vercel.app/",
+    texture: "/textures/project/lunexa.mp4",
+    logo: "/assets/project-logo5.png",
+    logoStyle: {
+      backgroundColor: "#1A0A26",
+      border: "0.2px solid #6A0DAD",
+      boxShadow: "0px 0px 60px 0px #8A2BE24D",
+    },
+    spotlight: "/assets/spotlight4.png",
+    tags: [
+      { id: 1, name: "React.js", path: "/assets/react.svg" },
+      { id: 2, name: "TailwindCSS", path: "assets/tailwindcss.png" },
+      { id: 3, name: "TypeScript", path: "/assets/typescript.png" },
+      { id: 4, name: "Framer Motion", path: "/assets/framer.png" },
+    ],
+  },
 
+  {
+    title: "Quick FicX AI",
+    desc: "An AI-driven Android application that enhances communication and creativity with tools like grammar correction, smart replies, resume feedback, and storytelling in one place.",
+    subdesc:
+      "Built with Jetpack Compose, Kotlin, and Shared Preferences, the app integrates GitHub-hosted GPT-4.1 and Gemini for real-time responses, offering professional checks, AI stories, social posts, and resume insights in a user-friendly mobile experience.",
     href: "https://github.com/khubaib11/quickfixai",
     texture: "/textures/project/project2.mp4",
     logo: "/assets/quickfix.jpeg",
@@ -97,112 +142,21 @@ export const myProjects = [
     },
     spotlight: "/assets/spotlight2.png",
     tags: [
-      {
-        id: 1,
-        name: "Kotlin",
-        path: "/assets/kotlin.svg",
-      },
-      {
-        id: 2,
-        name: "Jetpack Compose",
-        path: "/assets/jetpack-compose.svg", // Use the official Jetpack Compose logo if you can
-      },
-      {
-        id: 3,
-        name: "Android",
-        path: "/assets/android.svg",
-      },
-      {
-        id: 3,
-        name: "OpenAI",
-        path: "/assets/openai.svg",
-      }
-    ]
-  },
-  {
-    title: "CarePulse - Health Management System",
-    desc: "An innovative healthcare platform designed to streamline essential medical processes. It simplifies patient registration, appointment scheduling, and medical record management, providing a seamless experience for both healthcare providers and patients.",
-    subdesc:
-      "With a focus on efficiency, CarePulse integrantes complex forms and SMS notifications, by using Next.js, Appwrite, Twillio and Sentry that enhance operational workflows.",
-    href: "https://www.youtube.com/watch?v=lEflo_sc82g",
-    texture: "/textures/project/project3.mp4",
-    logo: "/assets/project-logo3.png",
-    logoStyle: {
-      backgroundColor: "#60f5a1",
-      background:
-        "linear-gradient(0deg, #60F5A150, #60F5A150), linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(208, 213, 221, 0.8) 100%)",
-      border: "0.2px solid rgba(208, 213, 221, 1)",
-      boxShadow: "0px 0px 60px 0px rgba(35, 131, 96, 0.3)",
-    },
-    spotlight: "/assets/spotlight3.png",
-    tags: [
-      {
-        id: 1,
-        name: "React.js",
-        path: "/assets/react.svg",
-      },
-      {
-        id: 2,
-        name: "TailwindCSS",
-        path: "assets/tailwindcss.png",
-      },
-      {
-        id: 3,
-        name: "TypeScript",
-        path: "/assets/typescript.png",
-      },
-      {
-        id: 4,
-        name: "Framer Motion",
-        path: "/assets/framer.png",
-      },
+      { id: 1, name: "Kotlin", path: "/assets/kotlin.svg" },
+      { id: 2, name: "Jetpack Compose", path: "/assets/jetpack-compose.svg" },
+      { id: 3, name: "Android", path: "/assets/android.svg" },
+      { id: 4, name: "OpenAI", path: "/assets/openai.svg" },
     ],
   },
+
   {
-    title: "Horizon - Online Banking Platform",
-    desc: "Horizon is a comprehensive online banking platform that offers users a centralized finance management dashboard. It allows users to connect multiple bank accounts, monitor real-time transactions, and seamlessly transfer money to other users.",
+    title: "AI Horizons - AI Blog & News Platform",
+    desc: "AI Horizons is a modern platform delivering blogs, guides, and expert insights about Artificial Intelligence, helping users explore trends and stay updated in the fast-changing AI world.",
     subdesc:
-      "Built with Next.js 14 Appwrite, Dwolla and Plaid, Horizon ensures a smooth and secure banking experience, tailored to meet the needs of modern consumers.",
-    href: "https://www.youtube.com/watch?v=PuOVqP_cjkE",
-    texture: "/textures/project/project4.mp4",
-    logo: "/assets/project-logo4.png",
-    logoStyle: {
-      backgroundColor: "#0E1F38",
-      border: "0.2px solid #0E2D58",
-      boxShadow: "0px 0px 60px 0px #2F67B64D",
-    },
-    spotlight: "/assets/spotlight4.png",
-    tags: [
-      {
-        id: 1,
-        name: "React.js",
-        path: "/assets/react.svg",
-      },
-      {
-        id: 2,
-        name: "TailwindCSS",
-        path: "assets/tailwindcss.png",
-      },
-      {
-        id: 3,
-        name: "TypeScript",
-        path: "/assets/typescript.png",
-      },
-      {
-        id: 4,
-        name: "Framer Motion",
-        path: "/assets/framer.png",
-      },
-    ],
-  },
-  {
-    title: "Imaginify - AI Photo Manipulation App",
-    desc: "Imaginify is a groundbreaking Software-as-a-Service application that empowers users to create stunning photo manipulations using AI technology. With features like AI-driven image editing, a payments system, and a credits-based model.",
-    subdesc:
-      "Built with Next.js 14, Cloudinary AI, Clerk, and Stripe, Imaginify combines cutting-edge technology with a user-centric approach. It can be turned into a side income or even a full-fledged business.",
-    href: "https://www.youtube.com/watch?v=Ahwoks_dawU",
-    texture: "/textures/project/project5.mp4",
-    logo: "/assets/project-logo5.png",
+      "Built with Vite, React, TypeScript, Tailwind, Radix UI, and TanStack Query, AI Horizons ensures speed, scalability, and a clean design, serving as both a learning hub and a trusted source for enthusiasts and professionals.",
+    href: "https://ai-horizon-blog-web.vercel.app/",
+    texture: "/textures/project/ai-horizon.mp4",
+    logo: "/assets/ai-blog.png",
     logoStyle: {
       backgroundColor: "#1C1A43",
       border: "0.2px solid #252262",
@@ -210,29 +164,13 @@ export const myProjects = [
     },
     spotlight: "/assets/spotlight5.png",
     tags: [
-      {
-        id: 1,
-        name: "React.js",
-        path: "/assets/react.svg",
-      },
-      {
-        id: 2,
-        name: "TailwindCSS",
-        path: "assets/tailwindcss.png",
-      },
-      {
-        id: 3,
-        name: "TypeScript",
-        path: "/assets/typescript.png",
-      },
-      {
-        id: 4,
-        name: "Framer Motion",
-        path: "/assets/framer.png",
-      },
+      { id: 1, name: "React.js", path: "/assets/react.svg" },
+      { id: 2, name: "TailwindCSS", path: "assets/tailwindcss.png" },
+      { id: 3, name: "TypeScript", path: "/assets/typescript.png" },
     ],
   },
 ];
+
 
 export const calculateSizes = (isSmall, isMobile, isTablet) => {
   // Base positions for desktop
