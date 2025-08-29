@@ -52,16 +52,64 @@ export const clientReviews = [
     position: "CEO of BrightStar Enterprises",
     img: "assets/review4.png",
     review:
-    "Adrian was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend backend dev are top-notch.",
+      "Adrian was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend backend dev are top-notch.",
   },
 ];
 
 export const myProjects = [
   {
+    title: "Social Flow Automation",
+    desc: "A smart platform to plan, generate, and publish social content faster. Create high-quality captions, titles, and hashtags, then post images/videos to LinkedIn, Facebook, Instagram, and Twitter/X in one click.",
+    subdesc:
+  "Built with React.js and TailwindCSS, integrated with Gemini for AI-driven content generation, Cloudinary for media handling, and webhook-based automation using Make to streamline multi-platform workflows.",
+href: "https://social-flow-automator.vercel.app/", // Project overview
+    texture: "/textures/project/SM Automation.mp4",
+    logo: "/assets/social_flow_logo.svg",
+    gitURL: "https://github.com/khubaib11/SocialFlow-Automator",
+    logoStyle: {
+      backgroundColor: "#FFFFFF",
+      border: "0.2px solid #F9FAFB",
+      boxShadow: "0px 0px 60px 0px #FFFFFF80",
+    },
+    spotlight: "/assets/spotlight5.png",
+    tags: [
+      { id: 1, name: "React.js", path: "/assets/react.svg" },
+      { id: 2, name: "Gemini", path: "/assets/gemini.png" },
+      { id: 3, name: "Make (Integromat)", path: "/assets/Make-app-icon.png" },
+      { id: 4, name: "Cloudinary", path: "/assets/Cloudinary.svg" },
+    ],
+  },
+  {
+    title: "Automated Answer Sheet Assessment System",
+    desc: "An AI-powered platform that automates the evaluation of handwritten student papers using OCR and rubric-based grading, ensuring accuracy, fairness, and minimal manual work.",
+    subdesc:
+      "Built with React.js, Node.js, Express, MongoDB, and Flask, the system uses AI models like Gemini, GPT-4o-mini, LLaMA 3.2, and H2O VL-Mississippi to provide accurate grading and reports for educators.",
+    gitURL:
+      "https://github.com/khubaib11/AUTOMATED-ANSWER-SHEET-ASSESSMENT-SYSTEM",
+    href: "",
+    texture: "/textures/project/project01.mp4",
+    logo: "/assets/sheet_logo.png",
+    logoStyle: {
+      backgroundColor: "#FFFFFF",
+      border: "0.2px solid #F9FAFB",
+      boxShadow: "0px 0px 60px 0px #FFFFFF80",
+    },
+    spotlight: "/assets/spotlight1.png",
+    tags: [
+      { id: 1, name: "React.js", path: "/assets/react.svg" },
+      { id: 2, name: "TailwindCSS", path: "/assets/tailwindcss.png" },
+      { id: 3, name: "NodeJs", path: "/assets/nodejs.svg" },
+      { id: 4, name: "H2O VL-Mississippi", path: "/assets/h2o.svg" },
+      { id: 5, name: "Python Flask", path: "/assets/flask.svg" },
+    ],
+  },
+
+  {
     title: "Bella Vista - Restaurant",
     desc: "A modern restaurant platform that lets customers browse menus, place orders, and follow events, while empowering Bella Vista to manage operations with ease and efficiency.",
     subdesc:
       "Built with Next.js, TypeScript, Firebase, Tailwind CSS, Radix UI, and shadcn/ui, Bella Vista offers diners a smooth interface and the restaurant team reliable tools for streamlined management.",
+    gitURL: "https://github.com/khubaib11/restaurants",
     href: "https://restaurants-bella-vista.vercel.app/",
     texture: "/textures/project/bella-restaurant.mp4",
     logo: "/assets/bella-vista.png",
@@ -75,33 +123,10 @@ export const myProjects = [
     spotlight: "/assets/spotlight3.png",
     tags: [
       { id: 1, name: "Next.js", path: "/assets/next.jpeg" },
-      { id: 2, name: "TailwindCSS", path: "assets/tailwindcss.png" },
+      { id: 2, name: "TailwindCSS", path: "/assets/tailwindcss.png" },
       { id: 3, name: "TypeScript", path: "/assets/typescript.png" },
       { id: 4, name: "Framer Motion", path: "/assets/framer.png" },
       { id: 5, name: "Firebase", path: "/assets/firebase.png" },
-    ],
-  },
-
-  {
-    title: "Automated Answer Sheet Assessment System",
-    desc: "An AI-powered platform that automates the evaluation of handwritten student papers using OCR and rubric-based grading, ensuring accuracy, fairness, and minimal manual work.",
-    subdesc:
-      "Developed with React.js, Node.js, Express.js, MongoDB Atlas, Firebase Auth, and Python Flask, it integrates advanced AI models like Gemini, GPT-4o-mini, LLaMA 3.2, and H2O VL-Mississippi to deliver reliable grading, performance reports, and a secure educator-focused experience.",
-    href: "https://github.com/khubaib11/AUTOMATED-ANSWER-SHEET-ASSESSMENT-SYSTEM",
-    texture: "/textures/project/project01.mp4",
-    logo: "/assets/sheet_logo.png",
-    logoStyle: {
-      backgroundColor: "#FFFFFF",
-      border: "0.2px solid #F9FAFB",
-      boxShadow: "0px 0px 60px 0px #FFFFFF80",
-    },
-    spotlight: "/assets/spotlight1.png",
-    tags: [
-      { id: 1, name: "React.js", path: "/assets/react.svg" },
-      { id: 2, name: "TailwindCSS", path: "assets/tailwindcss.png" },
-      { id: 3, name: "NodeJs", path: "/assets/nodejs.svg" },
-      { id: 4, name: "H2O VL-Mississippi", path: "/assets/h2o.svg" },
-      { id: 5, name: "Python Flask", path: "/assets/flask.svg" },
     ],
   },
 
@@ -110,6 +135,7 @@ export const myProjects = [
     desc: "Lunexa is a sleek trading platform enhanced with AI, providing intuitive tools and smooth navigation for both beginners and experienced traders to execute strategies with confidence.",
     subdesc:
       "Built with Vite, React 19, TypeScript, Phosphor Icons, Framer Motion, and React Router, Lunexa balances performance, animations, and modularity, enabling easy feature growth, advanced analytics, and commercial scalability.",
+    gitURL: "https://github.com/khubaib11/lunexa-AI-trading",
     href: "https://lunexa-ai-trading.vercel.app/",
     texture: "/textures/project/lunexa.mp4",
     logo: "/assets/project-logo5.png",
@@ -121,18 +147,40 @@ export const myProjects = [
     spotlight: "/assets/spotlight4.png",
     tags: [
       { id: 1, name: "React.js", path: "/assets/react.svg" },
-      { id: 2, name: "TailwindCSS", path: "assets/tailwindcss.png" },
+      { id: 2, name: "TailwindCSS", path: "/assets/tailwindcss.png" },
       { id: 3, name: "TypeScript", path: "/assets/typescript.png" },
       { id: 4, name: "Framer Motion", path: "/assets/framer.png" },
     ],
   },
 
   {
+    title: "AI Horizons - AI Blog & News Platform",
+    desc: "AI Horizons is a modern platform delivering blogs, guides, and expert insights about Artificial Intelligence, helping users explore trends and stay updated in the fast-changing AI world.",
+    subdesc:
+      "Built with Vite, React, TypeScript, Tailwind, Radix UI, and TanStack Query, AI Horizons ensures speed, scalability, and a clean design, serving as both a learning hub and a trusted source for enthusiasts and professionals.",
+    gitURL: "https://github.com/khubaib11/AI-Horizon-Blog-Web",
+    href: "https://ai-horizon-blog-web.vercel.app/",
+    texture: "/textures/project/ai-horizon.mp4",
+    logo: "/assets/ai-blog.png",
+    logoStyle: {
+      backgroundColor: "#1C1A43",
+      border: "0.2px solid #252262",
+      boxShadow: "0px 0px 60px 0px #635BFF4D",
+    },
+    spotlight: "/assets/spotlight5.png",
+    tags: [
+      { id: 1, name: "React.js", path: "/assets/react.svg" },
+      { id: 2, name: "TailwindCSS", path: "/assets/tailwindcss.png" },
+      { id: 3, name: "TypeScript", path: "/assets/typescript.png" },
+    ],
+  },
+  {
     title: "Quick FicX AI",
     desc: "An AI-driven Android application that enhances communication and creativity with tools like grammar correction, smart replies, resume feedback, and storytelling in one place.",
     subdesc:
-      "Built with Jetpack Compose, Kotlin, and Shared Preferences, the app integrates GitHub-hosted GPT-4.1 and Gemini for real-time responses, offering professional checks, AI stories, social posts, and resume insights in a user-friendly mobile experience.",
-    href: "https://github.com/khubaib11/quickfixai",
+      "Made with Jetpack Compose and Kotlin, the app uses GPT-4.1 and Gemini to deliver smart replies, AI stories, social posts, and resume feedback in a simple mobile experience.",
+    href: "",
+    gitURL: "https://github.com/khubaib11/quickfixai",
     texture: "/textures/project/project2.mp4",
     logo: "/assets/quickfix.jpeg",
     logoStyle: {
@@ -148,29 +196,7 @@ export const myProjects = [
       { id: 4, name: "OpenAI", path: "/assets/openai.svg" },
     ],
   },
-
-  {
-    title: "AI Horizons - AI Blog & News Platform",
-    desc: "AI Horizons is a modern platform delivering blogs, guides, and expert insights about Artificial Intelligence, helping users explore trends and stay updated in the fast-changing AI world.",
-    subdesc:
-      "Built with Vite, React, TypeScript, Tailwind, Radix UI, and TanStack Query, AI Horizons ensures speed, scalability, and a clean design, serving as both a learning hub and a trusted source for enthusiasts and professionals.",
-    href: "https://ai-horizon-blog-web.vercel.app/",
-    texture: "/textures/project/ai-horizon.mp4",
-    logo: "/assets/ai-blog.png",
-    logoStyle: {
-      backgroundColor: "#1C1A43",
-      border: "0.2px solid #252262",
-      boxShadow: "0px 0px 60px 0px #635BFF4D",
-    },
-    spotlight: "/assets/spotlight5.png",
-    tags: [
-      { id: 1, name: "React.js", path: "/assets/react.svg" },
-      { id: 2, name: "TailwindCSS", path: "assets/tailwindcss.png" },
-      { id: 3, name: "TypeScript", path: "/assets/typescript.png" },
-    ],
-  },
 ];
-
 
 export const calculateSizes = (isSmall, isMobile, isTablet) => {
   // Base positions for desktop
