@@ -51,7 +51,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="c-space py-16 flex items-center justify-center min-h-screen" id="contact">
+    <section className="c-space py-4 flex items-center justify-center min-h-screen" id="contact">
       <div className="w-full max-w-5xl mx-auto ">
         {/* Terminal Top Bar */}
         <div className="bg-[#1C1C21] rounded-t-lg p-3 flex items-center border-b border-[#3A3A49]">

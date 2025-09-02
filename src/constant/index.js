@@ -252,28 +252,46 @@ export const workExperiences = [
     duration: "2024 - Present",
     title:
       "Working as a freelancer, I develop and deploy full-stack web applications, build automation solutions, and integrate AI-powered tools to streamline workflows. I collaborate with clients across various industries to deliver efficient, scalable, and innovative digital solutions tailored to their needs.",
+    shortTitle:
+      "Developed full-stack apps, automation tools, and AI integrations for diverse clients.",
     icon: "/assets/freelancer.svg",
     animation: "victory",
   },
   {
     id: 2,
+    name: "Sukkur IBA University",
+    pos: "Full Stack Developer (Project-Based)",
+    duration: "Jun 2025 - Present",
+    title:
+      "Collaborating with the core development team to build the official Sukkur IBA Admission Portal from scratch. I contributed to both frontend and backend development, led ERD design, and worked on system architecture in close coordination with the team.",
+    shortTitle:
+      "Built Sukkur IBA Admission Portal with frontend, backend, and ERD/system design.",
+    icon: "/assets/Sukkur_IBA_logo.png",
+    animation: "salute",
+  },
+  {
+    id: 3,
     name: "Scale AI",
     pos: "Prompt Engineer & AI Code Evaluator",
     duration: "Dec 2023 – Mar 2024",
     title:
-      "Evaluated fine-tuned large language model (LLM) outputs, reviewing code responses for accuracy and functionality. Designed effective prompts, documented improvement strategies, and collaborated on projects involving code generation, text classification, and summarization to ensure high-quality, client-aligned results.",
+      "At Scale AI, I evaluated fine-tuned large language model (LLM) outputs, reviewing AI-generated code for accuracy, correctness, and efficiency. I designed prompts to optimize responses, documented improvement strategies, and contributed to projects involving code generation, text classification, and summarization.",
+    shortTitle:
+      "Reviewed AI code outputs, designed prompts, and optimized LLM performance.",
     icon: "/assets/scale logo.png",
     animation: "clapping",
-  },
-
+  },  
   {
-    id: 3,
+    id: 4,
     name: "Hello World Technologies",
     pos: "Automation & Web Scraping Developer",
-    duration: "June 2023 - Aug 2023",
+    duration: "Jun 2023 - Aug 2023",
     title:
-      "Developed automation scripts to streamline repetitive tasks and improve workflow efficiency. Built web scraping solutions using Puppeteer and Node.js to extract and collect data from various sources. Automated data processing and management workflows, enhancing both accuracy and speed. Gained hands-on experience in JavaScript-based automation for handling and organizing large datasets.",
+      "Developed automation scripts to streamline repetitive tasks and improve workflow efficiency. Built web scraping tools using Puppeteer and Node.js to extract and collect structured data from multiple sources. Automated processing pipelines to manage large datasets, improving both speed and accuracy.",
+    shortTitle:
+      "Built automation scripts and Puppeteer-based scrapers for efficient data workflows.",
     icon: "/assets/helloWorldIcon.png",
     animation: "salute",
   },
 ];
+

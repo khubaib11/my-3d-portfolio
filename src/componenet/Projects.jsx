@@ -6,6 +6,7 @@ import CanvasLoader from "./CanvasLoader";
 import DemoComputer from "./DemoComputer";
 import { Suspense } from "react";
 import { OrbitControls } from "@react-three/drei";
+import { useMediaQuery } from "react-responsive";
 
 export default function Projects() {
   const [selectedprojectIndex, setSelectedprojectIndex] = useState(0);
@@ -20,6 +21,8 @@ export default function Projects() {
       }
     });
   };
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
   return (
     <section className="c-space my-20 " id="work">
       <p className="head-text">My Work </p>
@@ -49,7 +52,8 @@ export default function Projects() {
               {currentProject.title}
             </p>
             <p className="animatedText ">{currentProject.desc}</p>
-            <p className="animatedText ">{currentProject.subdesc}</p>
+            {isMobile ? <div></div>:<p className="animatedText ">{currentProject.subdesc}</p>}
+            
           </div>
           <div className="flex items-center justify-between flex-wrap gap-5">
             <div className="flex items-center gap-3">
@@ -63,40 +67,38 @@ export default function Projects() {
               ))}
             </div>
             <div className="flex items-center gap-6">
-  {currentProject.gitURL && (
-    <a
-      href={currentProject.gitURL}
-      target="_blank"
-      rel="noreferrer"
-      className="flex items-center gap-2 cursor-pointer text-white hover:text-gray-300 transition-colors"
-    >
-      <p>Check Code</p>
-      <img
-        src="/assets/arrow-up.png"
-        className="w-3 h-3"
-        alt="arrow"
-      />
-    </a>
-  )}
+              {currentProject.gitURL && (
+                <a
+                  href={currentProject.gitURL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 cursor-pointer text-white hover:text-gray-300 transition-colors"
+                >
+                  <p>Check Code</p>
+                  <img
+                    src="/assets/arrow-up.png"
+                    className="w-3 h-3"
+                    alt="arrow"
+                  />
+                </a>
+              )}
 
-  {currentProject.href && (
-    <a
-      href={currentProject.href}
-      target="_blank"
-      rel="noreferrer"
-      className="flex items-center gap-2 cursor-pointer text-white hover:text-gray-300 transition-colors"
-    >
-      <p>Live Site</p>
-      <img
-        src="/assets/arrow-up.png"
-        className="w-3 h-3"
-        alt="arrow"
-      />
-    </a>
-  )}
-</div>
-
-
+              {currentProject.href && (
+                <a
+                  href={currentProject.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 cursor-pointer text-white hover:text-gray-300 transition-colors"
+                >
+                  <p>Live Site</p>
+                  <img
+                    src="/assets/arrow-up.png"
+                    className="w-3 h-3"
+                    alt="arrow"
+                  />
+                </a>
+              )}
+            </div>
           </div>
           <div className="flex justify-between items-center mt-7 ">
             <button
