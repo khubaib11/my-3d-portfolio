@@ -1,68 +1,44 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState } from "react";
 import { myProjects } from "../constant";
 import { useMediaQuery } from "react-responsive";
 
 export default function Projects() {
   const [selectedprojectIndex, setSelectedprojectIndex] = useState(0);
-
-  // Memoize the current project object to prevent unnecessary re-renders.
-  const currentProject = useMemo(() => {
-    return myProjects[selectedprojectIndex];
-  }, [selectedprojectIndex]);
-
+  const currentProject = myProjects[selectedprojectIndex];
   const projectCount = myProjects.length;
 
-  // Memoize the navigation function to prevent it from being recreated on every render.
-  const handleNavigation = useCallback(
-    (direction) => {
-      setSelectedprojectIndex((prevIndex) => {
-        if (direction === "previous") {
-          return prevIndex === 0 ? projectCount - 1 : prevIndex - 1;
-        } else {
-          return prevIndex === projectCount - 1 ? 0 : prevIndex + 1;
-        }
-      });
-    },
-    [projectCount]
-  );
+  const handleNavigation = (direction) => {
+    setSelectedprojectIndex((prevIndex) => {
+      if (direction === "previous") {
+        return prevIndex === 0 ? projectCount - 1 : prevIndex - 1;
+      } else {
+        return prevIndex === projectCount - 1 ? 0 : prevIndex + 1;
+      }
+    });
+  };
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const isMobileView = currentProject.isMob;
 
-  // Memoizing these class strings isn't strictly necessary since they are static strings,
-  // but it's a good habit for more complex computed values.
-  const mobileFrameClasses = useMemo(
-    () =>
-      "relative w-64 h-auto p-2 bg-black rounded-[2rem] shadow-2xl transition-transform duration-500",
-    []
-  );
+  const mobileFrameClasses =
+    "relative w-64 h-auto p-2 bg-black rounded-[2rem] shadow-2xl transition-transform duration-500";
+  const laptopFrameClasses =
+    "relative w-full max-w-2xl  lg:ml-5 h-auto p-2 bg-gray-900 rounded-3xl shadow-2xl transition-transform duration-500";
 
-  const laptopFrameClasses = useMemo(
-    () =>
-      "relative w-full max-w-2xl  lg:ml-5 h-auto p-2 bg-gray-900 rounded-3xl shadow-2xl transition-transform duration-500",
-    []
-  );
+  const videoContainerClasses = isMobileView
+    ? "bg-black border-[6px] border-black rounded-[1.8rem] overflow-hidden"
+    : "bg-gray-800 border-4 border-gray-800 rounded-2xl overflow-hidden p-1";
 
-  const videoContainerClasses = useMemo(
-    () =>
-      isMobileView
-        ? "bg-black border-[6px] border-black rounded-[1.8rem] overflow-hidden"
-        : "bg-gray-800 border-4 border-gray-800 rounded-2xl overflow-hidden p-1",
-    [isMobileView]
-  );
-
-  const videoClasses = useMemo(
-    () =>
-      isMobileView
-        ? "w-full h-auto aspect-[9/19.5] object-cover rounded"
-        : "w-full h-auto object-cover rounded-xl",
-    [isMobileView]
-  );
+  const videoClasses = isMobileView
+    ? "w-full h-auto aspect-[9/19.5] object-cover rounded"
+    : "w-full h-auto object-cover rounded-xl";
 
   return (
     <section className="c-space my-20 lg:my-5 " id="work">
       <h3 className="head-text">My Work</h3>
+
+      {/* <p className="head-text">My Work </p> */}
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
         <div className="flex flex-col gap-5 relative sm:10 py-10 px-5 shadow-2xl shadow-black-200">
           <div className="absolute top-0 right-0">
