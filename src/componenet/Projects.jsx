@@ -1,31 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { myProjects } from "../constant";
-import { Canvas } from "@react-three/fiber";
-import { Center } from "@react-three/drei";
-import CanvasLoader from "./CanvasLoader";
-import DemoComputer from "./DemoComputer";
-import { Suspense } from "react";
-import { OrbitControls } from "@react-three/drei";
 import { useMediaQuery } from "react-responsive";
 
 export default function Projects() {
   const [selectedprojectIndex, setSelectedprojectIndex] = useState(0);
-  const currentProject = myProjects[selectedprojectIndex];
+
+  // Memoize the current project object to prevent unnecessary re-renders.
+  const currentProject = useMemo(() => {
+    return myProjects[selectedprojectIndex];
+  }, [selectedprojectIndex]);
+
   const projectCount = myProjects.length;
-  const handleNavigation = (direction) => {
-    setSelectedprojectIndex((prevIndex) => {
-      if (direction === "previous") {
-        return prevIndex === 0 ? projectCount - 1 : prevIndex - 1;
-      } else {
-        return prevIndex === projectCount - 1 ? 0 : prevIndex + 1;
-      }
-    });
-  };
+
+  // Memoize the navigation function to prevent it from being recreated on every render.
+  const handleNavigation = useCallback(
+    (direction) => {
+      setSelectedprojectIndex((prevIndex) => {
+        if (direction === "previous") {
+          return prevIndex === 0 ? projectCount - 1 : prevIndex - 1;
+        } else {
+          return prevIndex === projectCount - 1 ? 0 : prevIndex + 1;
+        }
+      });
+    },
+    [projectCount]
+  );
+
   const isMobile = useMediaQuery({ maxWidth: 768 });
+
+  const isMobileView = currentProject.isMob;
+
+  // Memoizing these class strings isn't strictly necessary since they are static strings,
+  // but it's a good habit for more complex computed values.
+  const mobileFrameClasses = useMemo(
+    () =>
+      "relative w-64 h-auto p-2 bg-black rounded-[2rem] shadow-2xl transition-transform duration-500",
+    []
+  );
+
+  const laptopFrameClasses = useMemo(
+    () =>
+      "relative w-full max-w-2xl  lg:ml-5 h-auto p-2 bg-gray-900 rounded-3xl shadow-2xl transition-transform duration-500",
+    []
+  );
+
+  const videoContainerClasses = useMemo(
+    () =>
+      isMobileView
+        ? "bg-black border-[6px] border-black rounded-[1.8rem] overflow-hidden"
+        : "bg-gray-800 border-4 border-gray-800 rounded-2xl overflow-hidden p-1",
+    [isMobileView]
+  );
+
+  const videoClasses = useMemo(
+    () =>
+      isMobileView
+        ? "w-full h-auto aspect-[9/19.5] object-cover rounded"
+        : "w-full h-auto object-cover rounded-xl",
+    [isMobileView]
+  );
 
   return (
     <section className="c-space my-20 lg:my-5 " id="work">
-      <p className="head-text">My Work </p>
+      <h3 className="head-text">My Work</h3>
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
         <div className="flex flex-col gap-5 relative sm:10 py-10 px-5 shadow-2xl shadow-black-200">
           <div className="absolute top-0 right-0">
@@ -52,8 +89,11 @@ export default function Projects() {
               {currentProject.title}
             </p>
             <p className="animatedText ">{currentProject.desc}</p>
-            {isMobile ? <div></div>:<p className="animatedText ">{currentProject.subdesc}</p>}
-            
+            {isMobile ? (
+              <div></div>
+            ) : (
+              <p className="animatedText ">{currentProject.subdesc}</p>
+            )}
           </div>
           <div className="flex items-center justify-between flex-wrap gap-5">
             <div className="flex items-center gap-3">
@@ -82,7 +122,6 @@ export default function Projects() {
                   />
                 </a>
               )}
-
               {currentProject.href && (
                 <a
                   href={currentProject.href}
@@ -123,23 +162,55 @@ export default function Projects() {
             </button>
           </div>
         </div>
-        <div className="border border-black-300 bg-black-200 rounded-lg h-96 md:h-full  ">
-          <Canvas>
-            <ambientLight intensity={Math.PI} />
-            <directionalLight position={[10, 10, 5]} />
-            <Center>
-              <Suspense fallback={<CanvasLoader />}>
-                <group
-                  scale={[2, 2, 2]}
-                  position={[0, -3, 0]}
-                  rotation={[0, -0.1, 0]}
-                >
-                  <DemoComputer texture={currentProject.texture} />
-                </group>
-              </Suspense>
-            </Center>
-            <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
-          </Canvas>
+        {/* Dynamic Device Screen for Video */}
+        <div className="w-full flex justify-center items-center">
+          {isMobileView ? (
+            // Mobile Frame
+            <div className={mobileFrameClasses}>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/5 h-4 bg-gray-900 rounded-b-xl z-10"></div>
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 mt-1 w-10 h-1.5 bg-gray-700 rounded-full z-20"></div>
+              <div className="absolute top-2 left-1/2 translate-x-3 mt-1 w-2 h-2 bg-gray-600 rounded-full z-20"></div>
+              <div className={videoContainerClasses}>
+                {currentProject.texture ? (
+                  <video
+                    src={currentProject.texture}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className={videoClasses}
+                  />
+                ) : (
+                  <div className="w-full aspect-[9/19.5] flex items-center justify-center text-gray-500 bg-gray-900 rounded-2xl">
+                    Video not available.
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            // Laptop Frame
+            <div className={laptopFrameClasses}>
+              <div className="w-full h-auto p-1  bg-gray-800 rounded-2xl overflow-hidden">
+                <div className={videoContainerClasses}>
+                  {currentProject.texture ? (
+                    <video
+                      src={currentProject.texture}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className={videoClasses}
+                    />
+                  ) : (
+                    <div className="w-full aspect-[16/9] flex items-center justify-center text-gray-500 bg-gray-900 rounded-xl">
+                      Video not available.
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-2/3 h-2 bg-gray-700 rounded-b-2xl"></div>
+            </div>
+          )}
         </div>
       </div>
     </section>

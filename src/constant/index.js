@@ -78,6 +78,7 @@ href: "https://social-flow-automator.vercel.app/", // Project overview
       { id: 3, name: "Make (Integromat)", path: "/assets/Make-app-icon.png" },
       { id: 4, name: "Cloudinary", path: "/assets/Cloudinary.svg" },
     ],
+    isMob:false,
   },
   {
     title: "Automated Answer Sheet Assessment System",
@@ -102,6 +103,7 @@ href: "https://social-flow-automator.vercel.app/", // Project overview
       { id: 4, name: "H2O VL-Mississippi", path: "/assets/h2o.svg" },
       { id: 5, name: "Python Flask", path: "/assets/flask.svg" },
     ],
+    isMob:false,
   },
 
   {
@@ -128,6 +130,7 @@ href: "https://social-flow-automator.vercel.app/", // Project overview
       { id: 4, name: "Framer Motion", path: "/assets/framer.png" },
       { id: 5, name: "Firebase", path: "/assets/firebase.png" },
     ],
+    isMob:false,
   },
 
   {
@@ -151,6 +154,7 @@ href: "https://social-flow-automator.vercel.app/", // Project overview
       { id: 3, name: "TypeScript", path: "/assets/typescript.png" },
       { id: 4, name: "Framer Motion", path: "/assets/framer.png" },
     ],
+    isMob:false,
   },
 
   {
@@ -173,6 +177,7 @@ href: "https://social-flow-automator.vercel.app/", // Project overview
       { id: 2, name: "TailwindCSS", path: "/assets/tailwindcss.png" },
       { id: 3, name: "TypeScript", path: "/assets/typescript.png" },
     ],
+    isMob:false,
   },
   {
     title: "Quick FicX AI",
@@ -195,6 +200,7 @@ href: "https://social-flow-automator.vercel.app/", // Project overview
       { id: 3, name: "Android", path: "/assets/android.svg" },
       { id: 4, name: "OpenAI", path: "/assets/openai.svg" },
     ],
+    isMob:true,
   },
 ];
 
