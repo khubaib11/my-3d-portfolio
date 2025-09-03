@@ -1,17 +1,18 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
+import { useMediaQuery } from "react-responsive";
 
 // Simple Canvas Loader Component for Vanilla Three.js
 const SimpleCanvasLoader = ({ isLoading, skillColor }) => {
-  const [dots, setDots] = useState('');
+  const [dots, setDots] = useState("");
 
   useEffect(() => {
     if (!isLoading) return;
-    
+
     const interval = setInterval(() => {
-      setDots(prev => {
-        if (prev.length >= 3) return '';
-        return prev + '.';
+      setDots((prev) => {
+        if (prev.length >= 3) return "";
+        return prev + ".";
       });
     }, 500);
 
@@ -22,51 +23,55 @@ const SimpleCanvasLoader = ({ isLoading, skillColor }) => {
 
   return (
     <>
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '120px',
-        height: '120px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        borderRadius: '50%',
-        zIndex: 10,
-        backdropFilter: 'blur(10px)'
-      }}>
-        <div 
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "120px",
+          height: "120px",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
+          borderRadius: "50%",
+          zIndex: 10,
+          backdropFilter: "blur(10px)",
+        }}
+      >
+        <div
           style={{
-            border: '3px solid rgba(255, 255, 255, 0.2)',
-            borderTop: `3px solid ${skillColor || '#3498db'}`,
-            borderRadius: '50%',
-            width: '30px',
-            height: '30px',
-            animation: 'spin 1s linear infinite'
+            border: "3px solid rgba(255, 255, 255, 0.2)",
+            borderTop: `3px solid ${skillColor || "#3498db"}`,
+            borderRadius: "50%",
+            width: "30px",
+            height: "30px",
+            animation: "spin 1s linear infinite",
           }}
         />
-        <p style={{
-          fontSize: 10,
-          color: '#F1F1F1',
-          fontWeight: 600,
-          marginTop: 8,
-          textAlign: 'center',
-          letterSpacing: '0.5px'
-        }}>
+        <p
+          style={{
+            fontSize: 10,
+            color: "#F1F1F1",
+            fontWeight: 600,
+            marginTop: 8,
+            textAlign: "center",
+            letterSpacing: "0.5px",
+          }}
+        >
           Loading{dots}
         </p>
       </div>
-      
+
       {/* Keyframes for the spinner */}
       <style jsx>{`
         @keyframes spin {
-          0% { 
-            transform: rotate(0deg); 
+          0% {
+            transform: rotate(0deg);
           }
-          100% { 
-            transform: rotate(360deg); 
+          100% {
+            transform: rotate(360deg);
           }
         }
       `}</style>
@@ -86,7 +91,7 @@ const SkillOrb = ({ skill, index }) => {
   useEffect(() => {
     // Set loading to true at start
     setIsLoading(true);
-    
+
     // 🛡️ Early exit check for robust error handling
     if (!mountRef.current) {
       console.error("Mount point is not available.");
@@ -148,16 +153,23 @@ const SkillOrb = ({ skill, index }) => {
         canvas.width = 512;
         canvas.height = 512;
         const context = canvas.getContext("2d");
-        
+
         // 🛡️ Null check for context
         if (!context) {
           console.error("Could not get 2D context from canvas");
           setIsLoading(false);
           return;
         }
-        
+
         context.clearRect(0, 0, 512, 512);
-        const gradient = context.createRadialGradient(256, 256, 0, 256, 256, 256);
+        const gradient = context.createRadialGradient(
+          256,
+          256,
+          0,
+          256,
+          256,
+          256
+        );
         gradient.addColorStop(0, "rgba(255, 255, 255, 0.1)");
         gradient.addColorStop(1, "rgba(255, 255, 255, 0)");
         context.fillStyle = gradient;
@@ -175,21 +187,24 @@ const SkillOrb = ({ skill, index }) => {
         const iconText = skill.icon || "?";
         const metrics = context.measureText(iconText);
         let actualHeight = 0;
-        
+
         // Check if metrics and properties exist before accessing
-        if (metrics && 
-            metrics.actualBoundingBoxAscent !== undefined && 
-            metrics.actualBoundingBoxAscent !== null &&
-            metrics.actualBoundingBoxDescent !== undefined && 
-            metrics.actualBoundingBoxDescent !== null) {
-          actualHeight = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+        if (
+          metrics &&
+          metrics.actualBoundingBoxAscent !== undefined &&
+          metrics.actualBoundingBoxAscent !== null &&
+          metrics.actualBoundingBoxDescent !== undefined &&
+          metrics.actualBoundingBoxDescent !== null
+        ) {
+          actualHeight =
+            metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
         } else {
           // Fallback: estimate height based on font size
           actualHeight = 140; // approximate height based on font size
         }
-        
+
         context.fillText(iconText, 256, 256 + actualHeight * 0.1);
-        
+
         // 🛡️ Safe texture creation
         let texture;
         try {
@@ -234,7 +249,10 @@ const SkillOrb = ({ skill, index }) => {
           transparent: true,
           opacity: 0.6,
         });
-        const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+        const particles = new THREE.Points(
+          particlesGeometry,
+          particlesMaterial
+        );
         scene.add(particles);
 
         const ambientLight = new THREE.AmbientLight(0x404040, 0.3);
@@ -255,13 +273,13 @@ const SkillOrb = ({ skill, index }) => {
         // ANIMATION LOOP
         let time = 0;
         let isAnimating = true;
-        
+
         const animate = () => {
           // 🛡️ Check if component is still mounted and should continue animating
           if (!isAnimating || !mountRef.current) {
             return;
           }
-          
+
           frameRef.current = requestAnimationFrame(animate);
           time += 0.01;
 
@@ -286,19 +304,23 @@ const SkillOrb = ({ skill, index }) => {
               new THREE.Vector3(targetScale, targetScale, targetScale),
               0.1
             );
-            
+
             // 🛡️ Safe material access with null checks
             if (sphere?.material) {
               sphere.material.emissiveIntensity +=
-                (targetEmissiveIntensity - sphere.material.emissiveIntensity) * 0.1;
-                
+                (targetEmissiveIntensity - sphere.material.emissiveIntensity) *
+                0.1;
+
               if (isHovered && sphere.material.emissiveIntensity > 0.01) {
                 sphere.material.emissive.setHex(skill.color);
-              } else if (!isHovered && sphere.material.emissiveIntensity < 0.01) {
+              } else if (
+                !isHovered &&
+                sphere.material.emissiveIntensity < 0.01
+              ) {
                 sphere.material.emissive.setHex(0x000000);
               }
             }
-            
+
             if (wireframe?.material) {
               wireframe.material.opacity +=
                 (targetWireframeOpacity - wireframe.material.opacity) * 0.1;
@@ -316,13 +338,13 @@ const SkillOrb = ({ skill, index }) => {
               particles.geometry.attributes.position.needsUpdate = true;
             }
           }
-          
+
           // 🛡️ Safe renderer check
           if (renderer && scene && camera) {
             try {
               renderer.render(scene, camera);
             } catch (error) {
-              console.warn('Render error:', error);
+              console.warn("Render error:", error);
               isAnimating = false;
             }
           }
@@ -335,10 +357,12 @@ const SkillOrb = ({ skill, index }) => {
         const handleMouseMove = (event) => {
           if (!mountRef.current) return;
           const rect = mountRef.current.getBoundingClientRect();
-          mouseRef.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-          mouseRef.current.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+          mouseRef.current.x =
+            ((event.clientX - rect.left) / rect.width) * 2 - 1;
+          mouseRef.current.y =
+            -((event.clientY - rect.top) / rect.height) * 2 + 1;
         };
-        
+
         // 🛡️ Safe event listener addition
         if (mountRef.current) {
           mountRef.current.addEventListener("mousemove", handleMouseMove);
@@ -393,12 +417,11 @@ const SkillOrb = ({ skill, index }) => {
 
         // Return cleanup function
         return cleanup;
-
       } catch (error) {
-        console.error('Error setting up Three.js scene:', error);
+        console.error("Error setting up Three.js scene:", error);
         setIsLoading(false);
       }
-    }, 300 + (index * 100)); // Staggered loading with base delay
+    }, 300 + index * 100); // Staggered loading with base delay
 
     // Cleanup function for the timeout
     return () => {
@@ -421,7 +444,7 @@ const SkillOrb = ({ skill, index }) => {
           pointerEvents: "auto",
         }}
       />
-      
+
       {/* Simple Canvas Loader */}
       <SimpleCanvasLoader isLoading={isLoading} skillColor={skill.colorHex} />
 
@@ -445,6 +468,8 @@ const SkillOrb = ({ skill, index }) => {
 };
 
 export default function Skills() {
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+
   const skills = [
     { name: "React", icon: "⚛️", color: 0x61dafb, colorHex: "#61dafb" },
     { name: "Next.js", icon: "▲", color: 0x000000, colorHex: "#000000" },
@@ -461,11 +486,15 @@ export default function Skills() {
 
   return (
     <section className="sm:px-16 px-6 sm:py-16 py-10 max-w-6xl mx-auto relative z-4">
-      <div className="mt-10 flex flex-row flex-wrap justify-center gap-8 max-w-7xl mx-auto">
-        {skills.map((skill, index) => (
-          <SkillOrb key={skill.name} skill={skill} index={index} />
-        ))}
-      </div>
+      {isMobile ? (
+        <></>
+      ) : (
+        <div className="mt-10 flex flex-row flex-wrap justify-center gap-8 max-w-7xl mx-auto">
+          {skills.map((skill, index) => (
+            <SkillOrb key={skill.name} skill={skill} index={index} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
