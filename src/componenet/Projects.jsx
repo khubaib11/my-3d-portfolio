@@ -24,7 +24,7 @@ export default function Projects() {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
-    <section className="c-space my-20 " id="work">
+    <section className="c-space my-20 lg:my-5 " id="work">
       <p className="head-text">My Work </p>
       <div className="grid lg:grid-cols-2 grid-cols-1 mt-12 gap-5 w-full">
         <div className="flex flex-col gap-5 relative sm:10 py-10 px-5 shadow-2xl shadow-black-200">

@@ -186,34 +186,3 @@ body {
   70% { transform: rotate(0deg); }
   100% { transform: rotate(0deg); }
 }
-.shooting-star {
-  position: absolute;
-  width: 1px;
-  height: 32px; /* Now taller for vertical tail */
-  /* Creates the glowing tail, now from top to bottom */
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff);
-  /* Adds a subtle glow */
-  box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.4);
-  
-  /* Positions the tail to look like it's trailing */
-  transform-origin: 50% 0%;
-  animation: shooting-star-move linear infinite;
-  
-  /* Initial position and rotation */
-  transform: translate(0, 0) rotate(0deg);
-}
-
-/* The animation that moves the star across the screen */
-@keyframes shooting-star-move {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(200vh) rotate(0deg);
-    opacity: 0;
-  }
-}
