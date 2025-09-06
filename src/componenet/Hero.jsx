@@ -31,7 +31,7 @@ export default function Hero() {
       </div>
       <div className="w-full h-full absolute inset-0 pt-18 sm:pt-56">
         <Canvas className="w-full h-full ">
-          <Suspense fallback={CanvasLoader}>
+          <Suspense fallback={<CanvasLoader />}>
             <perspectiveCamera makeDefault position={[0, 0, 20]} />
               
             <HeroCamera isMobile={isMobile} isTablet={isTablet} isSmallScreen={isSmallScreen}>
