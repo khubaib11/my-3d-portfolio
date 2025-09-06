@@ -1,11 +1,23 @@
 import React, { useState } from "react";
+// Simple spinner component
+function Spinner() {
+  return (
+    <div className="flex items-center justify-center w-full h-full">
+      <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-gray-300"></div>
+    </div>
+  );
+}
 import { myProjects } from "../constant";
 import { useMediaQuery } from "react-responsive";
 
 export default function Projects() {
   const [selectedprojectIndex, setSelectedprojectIndex] = useState(0);
-  const currentProject = myProjects[selectedprojectIndex];
+  const [videoLoading, setVideoLoading] = useState(true);
   const projectCount = myProjects.length;
+  const currentProject = myProjects[selectedprojectIndex];
+  // Calculate next project index for preloading
+  const nextProjectIndex = (selectedprojectIndex + 1) % projectCount;
+  const nextProject = myProjects[nextProjectIndex];
 
   const handleNavigation = (direction) => {
     setSelectedprojectIndex((prevIndex) => {
@@ -148,14 +160,32 @@ export default function Projects() {
               <div className="absolute top-2 left-1/2 translate-x-3 mt-1 w-2 h-2 bg-gray-600 rounded-full z-20"></div>
               <div className={videoContainerClasses}>
                 {currentProject.texture ? (
-                  <video
-                    src={currentProject.texture}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className={videoClasses}
-                  />
+                  <>
+                    {videoLoading && <Spinner />}
+                    <video
+                      src={currentProject.texture}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className={videoClasses}
+                      loading="lazy"
+                      poster={currentProject.spotlight || currentProject.logo}
+                      onLoadedData={e => {
+                        setVideoLoading(false);
+                        e.target.style.opacity = 1;
+                      }}
+                      style={{ opacity: videoLoading ? 0 : 1, transition: 'opacity 0.3s' }}
+                    />
+                    {/* Preload next project's video invisibly */}
+                    {nextProject.texture && (
+                      <video
+                        src={nextProject.texture}
+                        preload="auto"
+                        style={{ display: 'none' }}
+                      />
+                    )}
+                  </>
                 ) : (
                   <div className="w-full aspect-[9/19.5] flex items-center justify-center text-gray-500 bg-gray-900 rounded-2xl">
                     Video not available.
@@ -169,14 +199,32 @@ export default function Projects() {
               <div className="w-full h-auto p-1  bg-gray-800 rounded-2xl overflow-hidden">
                 <div className={videoContainerClasses}>
                   {currentProject.texture ? (
-                    <video
-                      src={currentProject.texture}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className={videoClasses}
-                    />
+                    <>
+                      {videoLoading && <Spinner />}
+                      <video
+                        src={currentProject.texture}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className={videoClasses}
+                        loading="lazy"
+                        poster={currentProject.spotlight || currentProject.logo}
+                        onLoadedData={e => {
+                          setVideoLoading(false);
+                          e.target.style.opacity = 1;
+                        }}
+                        style={{ opacity: videoLoading ? 0 : 1, transition: 'opacity 0.3s' }}
+                      />
+                      {/* Preload next project's video invisibly */}
+                      {nextProject.texture && (
+                        <video
+                          src={nextProject.texture}
+                          preload="auto"
+                          style={{ display: 'none' }}
+                        />
+                      )}
+                    </>
                   ) : (
                     <div className="w-full aspect-[16/9] flex items-center justify-center text-gray-500 bg-gray-900 rounded-xl">
                       Video not available.
