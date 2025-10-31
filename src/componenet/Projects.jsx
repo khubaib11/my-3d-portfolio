@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 // Simple spinner component
 function Spinner() {
   return (
@@ -18,6 +18,10 @@ export default function Projects() {
   // Calculate next project index for preloading
   const nextProjectIndex = (selectedprojectIndex + 1) % projectCount;
   const nextProject = myProjects[nextProjectIndex];
+  // Cache for preloaded video blob URLs: { index: objectURL }
+  const preloaded = useRef({});
+  // state to trigger re-render when a video becomes available
+  const [, setPreloadedTick] = useState(0);
 
   const handleNavigation = (direction) => {
     setSelectedprojectIndex((prevIndex) => {
@@ -28,6 +32,54 @@ export default function Projects() {
       }
     });
   };
+
+  // Preload helper: fetch video, create blob URL and store in cache
+  const preloadVideo = async (index) => {
+    const project = myProjects[index];
+    if (!project || !project.texture) return;
+    if (preloaded.current[index]) return; // already cached
+
+    try {
+      const resp = await fetch(project.texture, { cache: "force-cache" });
+      if (!resp.ok) throw new Error(`Failed to fetch: ${resp.status}`);
+      const blob = await resp.blob();
+      const url = URL.createObjectURL(blob);
+      preloaded.current[index] = url;
+      // trigger a re-render so UI can pick up the blob URL
+      setPreloadedTick((t) => t + 1);
+    } catch (err) {
+      // swallow errors silently; fallback will use original src
+      // console.warn('Preload failed for index', index, err);
+    }
+  };
+
+  // Preload the next two videos whenever selected index changes.
+  // This improves perceived performance when navigating quickly.
+  useEffect(() => {
+    // preload current (in case it wasn't loaded previously), next and next+1
+    const idxs = [selectedprojectIndex, (selectedprojectIndex + 1) % projectCount, (selectedprojectIndex + 2) % projectCount];
+    idxs.forEach((i) => preloadVideo(i));
+
+    return () => {
+      // no-op here; cleanup of object URLs happens on unmount below
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedprojectIndex]);
+
+  // Reset loading state when user navigates to a different project
+  useEffect(() => {
+    setVideoLoading(true);
+  }, [selectedprojectIndex]);
+
+  // Revoke created object URLs on unmount to avoid memory leaks
+  useEffect(() => {
+    return () => {
+      Object.values(preloaded.current).forEach((u) => {
+        try { URL.revokeObjectURL(u); } catch (e) {}
+      });
+      preloaded.current = {};
+    };
+  }, []);
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
@@ -163,7 +215,7 @@ export default function Projects() {
                   <>
                     {videoLoading && <Spinner />}
                     <video
-                      src={currentProject.texture}
+                      src={preloaded.current[selectedprojectIndex] || currentProject.texture}
                       autoPlay
                       loop
                       muted
@@ -177,14 +229,6 @@ export default function Projects() {
                       }}
                       style={{ opacity: videoLoading ? 0 : 1, transition: 'opacity 0.3s' }}
                     />
-                    {/* Preload next project's video invisibly */}
-                    {nextProject.texture && (
-                      <video
-                        src={nextProject.texture}
-                        preload="auto"
-                        style={{ display: 'none' }}
-                      />
-                    )}
                   </>
                 ) : (
                   <div className="w-full aspect-[9/19.5] flex items-center justify-center text-gray-500 bg-gray-900 rounded-2xl">
@@ -202,7 +246,7 @@ export default function Projects() {
                     <>
                       {videoLoading && <Spinner />}
                       <video
-                        src={currentProject.texture}
+                        src={preloaded.current[selectedprojectIndex] || currentProject.texture}
                         autoPlay
                         loop
                         muted
@@ -216,14 +260,6 @@ export default function Projects() {
                         }}
                         style={{ opacity: videoLoading ? 0 : 1, transition: 'opacity 0.3s' }}
                       />
-                      {/* Preload next project's video invisibly */}
-                      {nextProject.texture && (
-                        <video
-                          src={nextProject.texture}
-                          preload="auto"
-                          style={{ display: 'none' }}
-                        />
-                      )}
                     </>
                   ) : (
                     <div className="w-full aspect-[16/9] flex items-center justify-center text-gray-500 bg-gray-900 rounded-xl">
