@@ -57,29 +57,7 @@ export const clientReviews = [
 ];
 
 export const myProjects = [
-  {
-    title: "Social Flow Automation",
-    desc: "A smart platform to plan, generate, and publish social content faster. Create high-quality captions, titles, and hashtags, then post images/videos to LinkedIn, Facebook, Instagram, and Twitter/X in one click.",
-    subdesc:
-  "Built with React.js and TailwindCSS, integrated with Gemini for AI-driven content generation, Cloudinary for media handling, and webhook-based automation using Make to streamline multi-platform workflows.",
-href: "https://social-flow-automator.vercel.app/", // Project overview
-    texture: "/textures/project/SM Automation.mp4",
-    logo: "/assets/social_flow_logo.svg",
-    gitURL: "https://github.com/khubaib11/SocialFlow-Automator",
-    logoStyle: {
-      backgroundColor: "#FFFFFF",
-      border: "0.2px solid #F9FAFB",
-      boxShadow: "0px 0px 60px 0px #FFFFFF80",
-    },
-    spotlight: "/assets/spotlight5.png",
-    tags: [
-      { id: 1, name: "React.js", path: "/assets/react.svg" },
-      { id: 2, name: "Gemini", path: "/assets/gemini.png" },
-      { id: 3, name: "Make (Integromat)", path: "/assets/Make-app-icon.png" },
-      { id: 4, name: "Cloudinary", path: "/assets/Cloudinary.svg" },
-    ],
-    isMob:false,
-  },
+  
   {
     title: "Automated Answer Sheet Assessment System",
     desc: "An AI-powered platform that automates the evaluation of handwritten student papers using OCR and rubric-based grading, ensuring accuracy, fairness, and minimal manual work.",
@@ -132,7 +110,29 @@ href: "https://social-flow-automator.vercel.app/", // Project overview
     ],
     isMob:false,
   },
-
+{
+    title: "Social Flow Automation",
+    desc: "A smart platform to plan, generate, and publish social content faster. Create high-quality captions, titles, and hashtags, then post images/videos to LinkedIn, Facebook, Instagram, and Twitter/X in one click.",
+    subdesc:
+  "Built with React.js and TailwindCSS, integrated with Gemini for AI-driven content generation, Cloudinary for media handling, and webhook-based automation using Make to streamline multi-platform workflows.",
+href: "https://social-flow-automator.vercel.app/", // Project overview
+    texture: "/textures/project/SM Automation.mp4",
+    logo: "/assets/social_flow_logo.svg",
+    gitURL: "https://github.com/khubaib11/SocialFlow-Automator",
+    logoStyle: {
+      backgroundColor: "#FFFFFF",
+      border: "0.2px solid #F9FAFB",
+      boxShadow: "0px 0px 60px 0px #FFFFFF80",
+    },
+    spotlight: "/assets/spotlight5.png",
+    tags: [
+      { id: 1, name: "React.js", path: "/assets/react.svg" },
+      { id: 2, name: "Gemini", path: "/assets/gemini.png" },
+      { id: 3, name: "Make (Integromat)", path: "/assets/Make-app-icon.png" },
+      { id: 4, name: "Cloudinary", path: "/assets/Cloudinary.svg" },
+    ],
+    isMob:false,
+  },
   {
     title: "Lunexa - AI-Powered Trading Platform",
     desc: "Lunexa is a sleek trading platform enhanced with AI, providing intuitive tools and smooth navigation for both beginners and experienced traders to execute strategies with confidence.",

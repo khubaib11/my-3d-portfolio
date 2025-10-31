@@ -4,7 +4,7 @@ import About from "./componenet/About";
 import Projects from "./componenet/Projects";
 import Contact from "./componenet/Contact";
 import Footer from "./componenet/Footer";
-import Skills from "./componenet/Skills";
+// import Skills from "./componenet/Skills";
 import Experience from "./componenet/Experience";
 import Particles from "./componenet/Particles";
 
@@ -17,7 +17,7 @@ function App() {
         <Navbar />
         <Hero/>
         <About />
-        <Skills/>
+        {/* <Skills/> */}
         <Projects/>
         <Experience/>
         <Contact/>
